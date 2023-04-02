@@ -4,14 +4,21 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+	"strings"
 )
+
+var pl = fmt.Println
 
 type Data struct {
 	URL string
 }
 
-func (user *Data) SetURL(input string) {
-	user.URL = input
+func (data *Data) setURL(userInput string)   {
+	data.URL = strings.TrimSpace(userInput)
+}	
+
+func (data *Data) ValidateURL()  bool {
+	return WEBSITE_REGEX.MatchString(data.URL)
 }
 
 func readFromCMD() (string, error){
@@ -23,9 +30,18 @@ func readFromCMD() (string, error){
 func Start(){
 	var data Data
 	var err error
-	data.URL, err = readFromCMD()
+	var userInput string
+
+	userInput, err = readFromCMD()
 	for err != nil {
-		data.URL, err = readFromCMD()
+		userInput, err = readFromCMD()
 	}
-	fmt.Println(data)
+	data.setURL(userInput)
+	isValidURL := data.ValidateURL()
+	for !isValidURL{
+		pl("Invalid URL, Enter the URL of your file: (e.g. https://abc.com/a.png) ")
+		userInput, err =readFromCMD()
+		data.setURL(userInput)
+		isValidURL = data.ValidateURL()
+	}
 }
