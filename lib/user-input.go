@@ -14,7 +14,12 @@ type Data struct {
 }
 
 func (data *Data) setURL(userInput string)   {
-	data.URL = strings.TrimSpace(userInput)
+	var trimmedData string = strings.TrimSpace(userInput)
+	if strings.ToLower(trimmedData) == "q"{
+		pl("\nBye, see you later... :)")
+		os.Exit(0)
+	}
+	data.URL = trimmedData
 }	
 
 func (data *Data) ValidateURL()  bool {
