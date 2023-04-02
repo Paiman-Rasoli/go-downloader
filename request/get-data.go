@@ -33,7 +33,7 @@ func generateFileName() string {
 	alphabets := "abcdefjhigklmnopqrstuvwxyz"
 	var fileName string
 	for i := 0; i < 6; i++{
-		randomIndex := rand.Intn(26) + 1
+		randomIndex := rand.Intn(26) // 0 - 25
             fileName += string(alphabets[randomIndex])
 	}
 	return fileName + strconv.Itoa(randomValue)
