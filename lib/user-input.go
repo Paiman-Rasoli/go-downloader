@@ -35,7 +35,7 @@ func readFromCMD() (string, error){
 	return userInput , err
 }
 
-func GetURL() string{
+func GetURL() string {
 	var data Data
 	var err error
 	var userInput string
@@ -54,4 +54,13 @@ func GetURL() string{
 		isValidURL = data.ValidateURL()
 	}
 	return data.URL
+}
+
+func Finish(){
+	reader := bufio.NewReader(os.Stdin)
+	_, err := reader.ReadString('\n')
+	if err != nil{
+		os.Exit(0)
+	}
+	os.Exit(0)
 }

@@ -14,4 +14,5 @@ func main(){
 	pl("\nEnter"+ color.InBlue("(q)") +" for exit from application..\n")	
 	URL := lib.GetURL()
 	request.FetchData(URL)
+	lib.Finish()
 }

@@ -57,5 +57,6 @@ func FetchData(URL string){
       }   
      defer out.Close()
      io.Copy(out, resp.Body)
+     mySpinner.Stop()
      fmt.Println("\n\n  Your file has been downloaded. 😀\n\n")
 }
