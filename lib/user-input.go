@@ -34,7 +34,7 @@ func readFromCMD() (string, error){
 	return userInput , err
 }
 
-func Start(){
+func GetURL() string{
 	var data Data
 	var err error
 	var userInput string
@@ -52,4 +52,5 @@ func Start(){
 		data.setURL(userInput)
 		isValidURL = data.ValidateURL()
 	}
+	return data.URL
 }
