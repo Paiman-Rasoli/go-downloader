@@ -6,7 +6,7 @@ https://user-images.githubusercontent.com/83835010/229380201-6f520d78-281f-414b-
 
 <h2> Run on local machine</h2>
 
-<p>firstly, clone the repo then install the packages using `go get` and type `go run main.go`</p>
+firstly, clone the repo then install the packages using `go get` and run the app by `go run main.go`
 
 <h2>Run the build file</h2>
 
