@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"os"
 	"strings"
+
+	"github.com/TwiN/go-color"
 )
 
 var pl = fmt.Println
@@ -37,6 +39,7 @@ func Start(){
 	var err error
 	var userInput string
 
+	pl("Enter the URL of your file "+ color.InGreen("(e.g. https://abc.com/a.png)"))
 	userInput, err = readFromCMD()
 	for err != nil {
 		userInput, err = readFromCMD()
@@ -44,7 +47,7 @@ func Start(){
 	data.setURL(userInput)
 	isValidURL := data.ValidateURL()
 	for !isValidURL{
-		pl("Invalid URL, Enter the URL of your file: (e.g. https://abc.com/a.png) ")
+		pl(color.InRed("Invalid URL")+" Please enter a valid URL: ")
 		userInput, err =readFromCMD()
 		data.setURL(userInput)
 		isValidURL = data.ValidateURL()
