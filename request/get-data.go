@@ -41,4 +41,5 @@ func FetchData(URL string){
       }   
      defer out.Close()
      io.Copy(out, resp.Body)
+     fmt.Println("Your file has been downloaded. 😀")
 }

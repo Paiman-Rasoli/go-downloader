@@ -31,6 +31,7 @@ func (data *Data) ValidateURL()  bool {
 func readFromCMD() (string, error){
 	reader := bufio.NewReader(os.Stdin)
 	userInput, err := reader.ReadString('\n')
+	clearConsole()
 	return userInput , err
 }
 
