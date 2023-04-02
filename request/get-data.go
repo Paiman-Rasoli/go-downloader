@@ -11,7 +11,7 @@ import (
 func printDetails(response *http.Response) {
 	var fileSizeInMB float64 = (float64(response.ContentLength) / 1024) / 1024
 	var fileType string = getType(response.Header.Get("Content-Type"))
-	fmt.Printf("\n { FileSize : %.2f MB  , fileType : %s }", fileSizeInMB,fileType)
+	fmt.Printf("\n { FileSize : %.2f MB  , fileType : %s }\n", fileSizeInMB,fileType)
 }
 
 
@@ -23,5 +23,8 @@ func FetchData(URL string){
 	  log.Fatalf("error on HEAD request: %s", err.Error())
 	}
 	printDetails(resp)
-
+	mySpinner := lunchSpinner()
+	mySpinner.Start()
+	var data []byte
+	resp.Body.Read(data)
 }
