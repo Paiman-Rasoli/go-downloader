@@ -5,8 +5,10 @@ import (
 	"io"
 	"log"
 	"math"
+	"math/rand"
 	"net/http"
 	"os"
+	"strconv"
 	"time"
 )
 
@@ -24,6 +26,20 @@ func printDetailsAndGetType(URL string) string {
 	return fileType
 }
 
+func generateFileName() string {
+	seedSec := time.Now().Unix()
+	rand.Seed(seedSec)
+	randomValue := rand.Intn(1000) + 4000
+	alphabets := "abcdefjhigklmnopqrstuvwxyz"
+	var fileName string
+	for i := 0; i < 6; i++{
+		randomIndex := rand.Intn(26) + 1
+            fileName += string(alphabets[randomIndex])
+	}
+	return fileName + strconv.Itoa(randomValue)
+}
+	
+
 
 func FetchData(URL string){
 	fileType := printDetailsAndGetType(URL)
@@ -35,7 +51,7 @@ func FetchData(URL string){
 		log.Fatal(err)
 	}
       defer resp.Body.Close()
-      out, err := os.Create("filename."+fileType)
+      out, err := os.Create(generateFileName()+"."+fileType)
       if err != nil {
         log.Fatal(err)
       }   
