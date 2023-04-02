@@ -5,7 +5,9 @@ import "strings"
 func getType(contentType string) string{
 	if strings.Contains(contentType,"image/"){
 		return strings.ReplaceAll(contentType,"image/","")
-	} else if !strings.Contains(contentType,"application"){
+	}else if strings.Contains(contentType,"video/"){
+		return strings.ReplaceAll(contentType,"video/","")
+	}else if !strings.Contains(contentType,"application"){
 		return contentType
 	}
 
