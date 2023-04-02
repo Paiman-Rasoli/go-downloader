@@ -8,6 +8,6 @@ import (
 
 func lunchSpinner() *spinner.Spinner {
 	s := spinner.New(spinner.CharSets[36], 100*time.Millisecond)
-      s.Prefix = "Downloading   "
+      s.Prefix = " Downloading   "
 	return s
 }

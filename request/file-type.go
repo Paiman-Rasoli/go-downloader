@@ -3,7 +3,9 @@ package request
 import "strings"
 
 func getType(contentType string) string{
-	if !strings.Contains(contentType,"application"){
+	if strings.Contains(contentType,"image/"){
+		return strings.ReplaceAll(contentType,"image/","")
+	} else if !strings.Contains(contentType,"application"){
 		return contentType
 	}
 
@@ -14,9 +16,9 @@ func getType(contentType string) string{
 	}else{
 		extension = spliced[1]
 	}
-	
+
 	switch extension{
-	case "octet-stream": return "binary"
+	case "octet-stream": return "msi"
 	default: return extension
     }
 }
